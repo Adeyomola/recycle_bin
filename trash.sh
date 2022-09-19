@@ -5,7 +5,7 @@ if [[ -d /trash ]]
 then
 :
 else
-( sudo mkdir /trash )
+( sudo mkdir /trash ) #creates /trash directory if it doesn't exist
 fi
 
 #checks if /trash/.metadata directory exists
@@ -13,14 +13,14 @@ if [[ -d /trash/.metadata ]]
 then
 :
 else
-( sudo mkdir /trash/.metadata; sudo chmod o+w /trash/.metadata )
+( sudo mkdir /trash/.metadata; sudo chmod o+w /trash/.metadata ) #creates metadata directory if it doesn't exist
 fi
 
 #define positional arguments
-arg1=$1
-arg2=$2
-arg3=$( sudo ls -i $arg2 | awk '{print $1}' )
-wd=$( pwd )
+arg1=$1 #argument 1 - indicates whether you intend to delete or restore a file
+arg2=$2 #argument 2 - indiates the file
+arg3=$( sudo ls -i $arg2 | awk '{print $1}' ) #argument 3 - the file's inode
+wd=$( pwd ) #working directory/the file's directory of origin
 
 #delete function
 function delete() {
