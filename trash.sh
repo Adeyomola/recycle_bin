@@ -57,7 +57,8 @@ echo $(( $( cat $i ) + 1 )) > $i
 if [[ $( cat $i ) == 31 ]] #deletes the files after 30 days
 then
 ( sudo rm $arg4 ) #command retrieves filename using inode
-( sudo rm "${i}" )
+( sudo rm "${i}" ) #removes metadata_count file corresponding to the file
+( sudo rm /trash/.metadata/${i##*/} ) #removes metadata file (directory data) corresponding to the file
 fi
 done
 else #if the directory is empty, do nothing
