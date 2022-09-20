@@ -51,13 +51,12 @@ if [[ $( ls -A /trash/.metadata_count ) ]] #checks if the directory is not empty
 then
 for i in /trash/.metadata_count/*
 do
+arg4=$( sudo find / -xdev -inum ${i##*/} )
 echo $(( $( cat $i ) + 1 )) > $i
-
-arg4=$( sudo ls -i | grep ${i##*/} |awk '{print $2}' ) #retrieves filename using inode
 
 if [[ $( cat $i ) == 31 ]] #deletes the files after 30 days
 then
-( sudo rm /trash/${arg4} )
+( sudo rm $arg4 ) #command retrieves filename using inode
 ( sudo rm "${i}" )
 fi
 done
