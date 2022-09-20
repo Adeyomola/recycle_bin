@@ -27,15 +27,22 @@ fi
 
 #define positional arguments and variables
 arg1=$1 #argument 1 - indicates whether you intend to delete or restore a file
-arg2=$2 #argument 2 - indiates the file
+arg2=$2 #argument 2 - indicates the file
 arg3=$( sudo ls -i $arg2 | awk '{print $1}' ) #argument 3 - the file's inode
 wd=$( pwd ) #working directory/the file's directory of origin
 
 #delete function
 function delete() {
+if [[ -e /trash/$arg2 ]]
+then
+( sudo echo $wd > /trash/.metadata/${arg3} )
+( sudo echo 1 > /trash/.metadata_count/${arg3} )
+( sudo mv -i "$arg2" /trash/${arg2}1 )
+else
 ( sudo echo $wd > /trash/.metadata/${arg3} )
 ( sudo echo 1 > /trash/.metadata_count/${arg3} )
 ( sudo mv -i "$arg2" /trash )
+fi
 }
 
 #restore function
