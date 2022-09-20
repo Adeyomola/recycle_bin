@@ -12,13 +12,15 @@ to the name of the new file. This ensures the old file is not overwritten by the
 ```mkdir bin```
 * Move the trash script to the bin folder.
 ```mv [trash script path] ~/bin```
-* Add the bin folder to $PATH
+* Add the bin folder to $PATH for user.
 ```export PATH=$PATH:~/bin```
+* Repeat the step above for root.
 
 ## COMMANDS
 * Move a file to the /trash directory:
 ```trash -d [FILE]```
 * Restore a file from the /trash folder to its original directory:
 ```trash -r [FILE]``` 
-* Activate the autodelete after 30 days function by adding the following to your crontab
-```0 0 * * * bash ~/bin/trash -c```
+* Activate the autodelete-after-30 days function by adding the following to your anacrontab (sudo nano /etc/anacrontab)
+```1       10      count-autodelete        trash -c```
+
