@@ -1,3 +1,4 @@
+## ABOUT THIS SHELL SCRIPT
 This script is a mock recycle bin for Linux terminals, currently in its early stages.
 So far, it can do the following:
 * Delete files by moving them to a recycle bin
