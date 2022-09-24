@@ -3,8 +3,8 @@ This script is a mock recycle bin for Linux terminals. So far, it can do the fol
 * Delete files by moving them to a recycle bin
 * Restore files to their original directory
 * Autodelete files after 30 days (30 days of running your computer for at least 10 minutes)
-* If an incoming file has the same name as a file in the trash folder, this script automatically adds "1"
-to the name of the new file. This ensures the old file is not overwritten by the new one.
+* If an incoming file has the same name as a file in the trash folder, it prompts the user to rename the file 
+before deleting it.
 
 ## HOW TO SET IT UP
 * Download the trash script.

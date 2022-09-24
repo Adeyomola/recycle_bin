@@ -33,15 +33,21 @@ wd=$( pwd ) #working directory/the file's directory of origin
 
 #delete function
 function delete() {
+if [[ $( pwd ) == /trash ]]
+then
+:
+else
 if [[ -e /trash/$arg2 ]]
 then
-( sudo echo $wd > /trash/.metadata/${arg3} )
-( sudo echo 1 > /trash/.metadata_count/${arg3} )
-( sudo mv -i "$arg2" /trash/${arg2}1 )
+echo "Filename already exists in the trash. Please rename the file and try again"
+#( sudo echo $wd > /trash/.metadata/${arg3} )
+#( sudo echo 1 > /trash/.metadata_count/${arg3} )
+#( sudo mv -i "$arg2" /trash/${arg2%.*}$(( count )).${arg2#*.} )
 else
 ( sudo echo $wd > /trash/.metadata/${arg3} )
 ( sudo echo 1 > /trash/.metadata_count/${arg3} )
 ( sudo mv -i "$arg2" /trash )
+fi
 fi
 }
 
