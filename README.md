@@ -11,7 +11,7 @@ before deleting it.
 * Move the trash script to the /usr/local/bin folder.
 ```sudo mv -i [trash script path] /usr/local/bin```
 The ```-i``` ensures that you do not automatically overwrite any existing binary with the same name.
-* cd to the /usr/bin
+* cd to the /usr/local/bin
 ```cd /usr/local/bin```
 * Make the trash script executable for others
 ```sudo chmod o+x trash```
