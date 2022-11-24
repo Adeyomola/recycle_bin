@@ -8,11 +8,11 @@ before deleting it.
 
 ## HOW TO SET IT UP
 * Download the trash script.
-* Move the trash script to the /usr/bin folder.
-```sudo mv -i [trash script path] /usr/bin```
+* Move the trash script to the /usr/local/bin folder.
+```sudo mv -i [trash script path] /usr/local/bin```
 The ```-i``` ensures that you do not automatically overwrite any existing binary with the same name.
 * cd to the /usr/bin
-```cd /usr/bin```
+```cd /usr/local/bin```
 * Make the trash script executable for others
 ```sudo chmod o+x trash```
 
