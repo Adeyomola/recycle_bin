@@ -55,13 +55,14 @@ fi
 
 #restore function
 function restore() {
-exitcode=$( sudo mv -i ${arg2} $( cat /trash/.metadata/${arg3} >> /dev/null 2>&1 ) )$?
 ( sudo mv -i ${arg2} $( cat /trash/.metadata/${arg3} ) )
 ( sudo rm /trash/.metadata/${arg3} )
 ( sudo rm /trash/.metadata_count/${arg3} )
 
-if [[ $exitcode == 0 ]]
+if [[ -f /trash/${arg2} ]]
 then
+echo "{arg2} was not restored."
+else
 echo "${arg2} has been restored."
 fi
 }
