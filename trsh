@@ -28,7 +28,7 @@ fi
 #define positional arguments and variables
 arg1=$1 #argument 1 - indicates whether you intend to delete or restore a file
 arg2=$2 #argument 2 - indicates the file
-arg3=$( sudo ls -i $arg2 | awk '{print $1}' ) #argument 3 - the file's inode
+arg3=$( sudo ls -i  $arg2 | awk '{print $1}' ) #argument 3 - the file's inode
 wd=$( pwd ) #working directory/the file's directory of origin
 
 #delete function
@@ -58,7 +58,11 @@ function restore() {
 ( sudo mv -i ${arg2} $( cat /trash/.metadata/${arg3} ) )
 ( sudo rm /trash/.metadata/${arg3} )
 ( sudo rm /trash/.metadata_count/${arg3} )
+
+if [[ $( sudo mv -i ${arg2} $( cat /trash/.metadata/${arg3} >> /dev/null 2>&1 ) )$? == 0 ]]
+then
 echo "${arg2} has been restored."
+fi
 }
 
 #counter
@@ -93,9 +97,12 @@ delete;;
 restore;;
 "-c")
 counter;;
-"-h")
-help;;
-"--help")
+"-h" | "--help")
 help;;
 esac
 
+#null option
+if [[ ! "$1" =~ ^- && !  "$1" =~ ^-- ]]
+then
+echo "Invalid argument. Check trsh -h."
+fi
