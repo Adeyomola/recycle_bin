@@ -55,7 +55,7 @@ fi
 
 #restore function
 function restore() {
-( sudo mv -i "$arg2" $( cat /trash/.metadata/${arg3} ) )
+( sudo mv -i ${arg2} $( cat /trash/.metadata/${arg3} ) )
 ( sudo rm /trash/.metadata/${arg3} )
 ( sudo rm /trash/.metadata_count/${arg3} )
 echo "${arg2} has been restored."
@@ -82,7 +82,7 @@ else #if the directory is empty, do nothing
 fi
 }
 
-function help() { echo -e "Usage: \n trsh [OPTION] [FILE] \n\n -d         -- Move file to trash \n -r         -- Restore file to its original directory \n -h, --help -- Display this help \n"
+function help() { echo -e "Usage: \n trsh [OPTION] [FILE] \n\n -d -- Move file to trash \n -r -- Restore file to its original directory (use this option from the /trash directory) \n -h, --help -- Display this help \n"
 }
 
 #case switch
