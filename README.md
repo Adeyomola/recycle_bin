@@ -7,21 +7,7 @@ This script is a recycle bin for Linux terminals. It can do the following:
 before moving it to the trash folder.
 
 ## HOW TO SET IT UP
-* Download the trash script.
-* Move the trash script to the /usr/local/bin folder.
-```sudo mv -i [trash script path] /usr/local/bin```
-The ```-i``` ensures that you do not automatically overwrite any existing binary with the same name.
-* cd to the /usr/local/bin
-```cd /usr/local/bin```
-* Make the trash script executable for others
-```sudo chmod o+x trash```
-
-### Activate Autodelete After 30 days
-* Activate the autodelete-after-30 days function by adding the following to your anacrontab (sudo nano /etc/anacrontab)
-```1       10      count-autodelete        trash -c```
+* Download the installer and run it
 
 ## COMMANDS
-* Move a file to the /trash directory:
-```trash -d [FILE]```
-* Restore a file from the /trash folder to its original directory:
-```trash -r [FILE]``` 
+* Run ```trsh -h``` or ```trsh --help``` to see the commands

@@ -1,13 +1,8 @@
 #!/bin/bash
 
-if [[ -f /usr/local/bin/trsh ]]
-then
-echo "trsh is already installed."
-else
 wget https://raw.githubusercontent.com/Adeyomola/recycle_bin/main/trsh
 sudo cp ./trsh /usr/local/bin
 sudo chmod +x /usr/local/bin/trsh
-fi
 
 sudo su - -c "sed -in '/count-autodelete/d' /etc/anacrontab"
 sudo su - -c 'echo "1       10      count-autodelete        trsh -c" >> /etc/anacrontab'
