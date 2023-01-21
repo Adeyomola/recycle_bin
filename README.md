@@ -9,9 +9,9 @@ before moving it to the trash folder.
 ## HOW TO SET IT UP
 * Download the installer:
 ```
-wget -0 trsh_installer https://raw.githubusercontent.com/Adeyomola/recycle_bin/main/installer
-chmod +x trsh_installer
-./trsh_installer
+$ wget -0 trsh_installer https://raw.githubusercontent.com/Adeyomola/recycle_bin/main/installer
+$ chmod +x trsh_installer
+$ ./trsh_installer
 ```
 
 
