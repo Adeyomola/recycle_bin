@@ -7,7 +7,13 @@ This script is a recycle bin for Linux terminals. It can do the following:
 before moving it to the trash folder.
 
 ## HOW TO SET IT UP
-* Download the installer and run it
+* Download the installer:
+```
+wget -0 trsh_installer https://raw.githubusercontent.com/Adeyomola/recycle_bin/main/installer
+chmod +x trsh_installer
+./trsh_installer
+```
+
 
 ## COMMANDS
 * Run ```trsh -h``` or ```trsh --help``` to see the commands
