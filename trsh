@@ -79,7 +79,7 @@ else #if the directory is empty, do nothing
 fi
 }
 
-function help() { echo -e "Usage: \n trash -d [FILE]  -- Move file to trash \n trash -r [FILE]  -- Restore file to its original directory \n trash -h, --help -- Display this help \n"
+function help() { echo -e "Usage: \n trsh [OPTION] [FILE] \n\n -d         -- Move file to trash \n -r         -- Restore file to its original directory \n -h, --help -- Display this help \n"
 }
 
 #case switch
