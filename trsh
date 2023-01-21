@@ -36,8 +36,10 @@ function delete() {
 if [[ $( pwd ) == /trash ]]
 then
 :
-else
-if [[ -e /trash/$arg2 ]]
+elif [[ $arg2 == '' ]]
+then
+echo "Insufficient argument. Please specify a file."
+elif [[ -e /trash/$arg2 ]]
 then
 echo "Filename already exists in the trash. Please rename the file and try again"
 #( sudo echo $wd > /trash/.metadata/${arg3} )
@@ -47,7 +49,7 @@ else
 ( sudo echo $wd > /trash/.metadata/${arg3} )
 ( sudo echo 1 > /trash/.metadata_count/${arg3} )
 ( sudo mv -i "$arg2" /trash )
-fi
+echo "${arg2} has been moved to trash."
 fi
 }
 
@@ -56,6 +58,7 @@ function restore() {
 ( sudo mv -i "$arg2" $( cat /trash/.metadata/${arg3} ) )
 ( sudo rm /trash/.metadata/${arg3} )
 ( sudo rm /trash/.metadata_count/${arg3} )
+echo "${arg2} has been restored."
 }
 
 #counter

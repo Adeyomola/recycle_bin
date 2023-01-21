@@ -1,9 +1,10 @@
 #!/bin/bash
-#wget
+
 if [[ -f /usr/local/bin/trsh ]]
 then
-echo "trash already exists"
+echo "trsh is already installed."
 else
+wget https://raw.githubusercontent.com/Adeyomola/recycle_bin/main/trsh
 sudo cp ./trsh /usr/local/bin
 sudo chmod +x /usr/local/bin/trsh
 fi
