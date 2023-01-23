@@ -28,7 +28,7 @@ fi
 #define positional arguments and variables
 arg1=$1 #argument 1 - indicates whether you intend to delete or restore a file
 arg2=$2 #argument 2 - indicates the file
-arg3=$( sudo ls -i  $arg2 | awk '{print $1}' ) #argument 3 - the file's inode
+arg3=$( sudo stat $arg2 | awk 'NR==3{print $4}' ) #argument 3 - the file's inode
 wd=$( pwd ) #working directory/the file's directory of origin
 
 #delete function
@@ -84,7 +84,7 @@ echo $(( $( cat $i ) + 1 )) > $i
 
 if [[ $( cat $i ) == 31 ]] #deletes the files after 30 days
 then
-( sudo rm $arg4 ) #command retrieves filename using inode
+( sudo rm -dr $arg4 ) #command retrieves filename using inode
 ( sudo rm "${i}" ) #removes metadata_count file corresponding to the file
 ( sudo rm /trash/.metadata/${i##*/} ) #removes metadata file (directory data) corresponding to the file
 fi
